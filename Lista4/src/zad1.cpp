@@ -32,7 +32,6 @@ Node *new_node(int value);
 Node *insert_node(Node *root, int value);
 Node *minimum_node(Node *root);
 Node *delete_node(Node *root, int value);
-Node *search_node(int value);
 int tree_height(Node *root);
 void tree_free(Node *root);
 void tree_print(Node *curr, int depth, char prefix, char *left_trace, char *right_trace, std::ostream &stream);
@@ -91,13 +90,13 @@ void tree_test(int tree_size, GeneratorMode mode, std::ostream &logs_stream)
     logs_stream << "\n      >-------------------<\n";
 
 
-    for(int i = 0; i < tree_size; i++)
+    for(int i = 1; i <= tree_size; i++)
     {   
         int node_value;
         
         if(mode == ASCENDING)
         {
-            node_value = i + 1;
+            node_value = i;
             root = insert_node(root, node_value);
         }
         else if(mode == RANDOM)
@@ -246,7 +245,7 @@ Node *delete_node(Node *root, int value)
         if(root->left == nullptr)
         {
             Node *temp = root->right;
-            free(root);
+            delete root;
 
             return temp;
         }

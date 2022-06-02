@@ -427,13 +427,13 @@ void tree_test(int tree_size, GeneratorMode mode, std::ostream &logs_stream)
     logs_stream << "\n      >-------------------<\n";
 
 
-    for(int i = 0; i < tree_size; i++)
+    for(int i = 1; i <= tree_size; i++)
     {   
         int node_value;
         
         if(mode == ASCENDING)
         {
-            node_value = i + 1;
+            node_value = i;
             splay_tree.insert_node(node_value);
         }
         else if(mode == RANDOM)
